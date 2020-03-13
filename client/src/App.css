@@ -1,7 +1,7 @@
 body {
-  font-family: Raleway;
+  font-family: sans-serif;
   color: #555;
-  background: #ff5252;
+  background: #4d6d9a;
   margin: 10px 30px;
 }
 
@@ -17,25 +17,36 @@ body {
 input[type="text"] {
   display: block;
   width: 300px;
-  margin: 20px 0;
+  margin: 5px 0;
   padding: 10px;
   border-radius: 4px;
   border: 1px solid #ddd;
 }
 
+input.is-invalid {
+  border-color: #dc3545;
+  padding-right: calc(1.5em + 0.75rem);
+}
 
 label {
   font-weight: bold;
 }
 
 .title {
-  color: #fff;
+  color: #f0ebf4;
   text-align: center;
   font-size: 48px;
 }
 
 #homepage h1 {
   text-align: center;
+}
+
+div.invalid-feedback {
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: 80%;
+  color: #dc3545;
 }
 
 form {
@@ -56,19 +67,23 @@ input[type="submit"] {
   border-radius: 4px;
 }
 
+input[type="number"] {
+  margin: 20px;
+}
+
 ul {
   margin: 0;
   padding: 0;
 }
 
 li {
-  padding: 15px 0;
+  padding: 5px 0;
   background: #eee;
   list-style-type: none;
-  font-size: 18px;
+  font-size: 12px;
   font-weight: bold;
-  margin: 10px 0;
-  border-radius: 4px;
+  margin: 0px 0;
+  border-radius: 1px;
 }
 
 span {
@@ -108,4 +123,9 @@ button {
 
 button.false {
   display: none;
+}
+
+.leaflet-container{
+  width:100%;
+  height:50vh;
 }
