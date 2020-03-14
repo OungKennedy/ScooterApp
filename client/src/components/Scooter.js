@@ -6,10 +6,9 @@ import {
     Input,
     Button,
     FormFeedback,
-    FormText
 } from 'reactstrap';
-const latBoundaries = [1.18, 1.46];
-const lngBoundaries = [103, 104];
+const latBoundaries = [1.32, 1.43];
+const lngBoundaries = [103.55, 104];
 const validateForm = (errors) => {
     let valid = true;
     Object.values(errors).forEach(
@@ -66,7 +65,7 @@ class Scooter extends Component {
 
     handleChange(event) {
         // might affect some functionalities
-        event.preventDefault();
+        // event.preventDefault();
         // form validation
         const { name, value } = event.target;
         let errors = this.state.errors;
@@ -93,14 +92,14 @@ class Scooter extends Component {
                 }
                 break;
             case 'limit':
-                if (isNaN(value) || value <= 0) {
+                if (isNaN(value) || value <= 0 ) {
                     errors.limit = 'Limit must be a positive integer.';
                 } else {
                     errors.limit = '';
                 }
                 break;
             case 'maxDistance':
-                if (isNaN(value) || value <= 0) {
+                if (isNaN(value) || value <= 0 ) {
                     errors.maxDistance = 'Range must be a positive number.'
                 } else {
                     errors.maxDistance = '';
@@ -126,25 +125,25 @@ class Scooter extends Component {
                 <Form onSubmit={this.handleSubmit} noValidate>
                     <FormGroup>
                         <Label for="longitude">Longitude</Label>
-                        <Input invalid={errors.lng} type="text" name="lng" id="lng" onChange={this.handleChange} required/>
+                        <Input invalid={errors.lng.length>0} type="text" name="lng" id="lng" onChange={this.handleChange} required/>
                         {errors.lng && <FormFeedback>{errors.lng}</FormFeedback> }
                     </FormGroup>
                     <FormGroup>
                         <Label for="latitude">Latitude</Label>
-                        <Input invalid={errors.lat} type="text" name="lat" id="lat" onChange={this.handleChange} required/>
+                        <Input invalid={errors.lat.length>0} type="text" name="lat" id="lat" onChange={this.handleChange} required/>
                         {errors.lat && <FormFeedback>{errors.lat}</FormFeedback> }
                     </FormGroup>
                     <FormGroup>
                         <Label for="range">Range (m)</Label>
-                        <Input invalid={errors.maxDistance} type="text" name="maxDistance" id="maxDistance" onChange={this.handleChange} required/>
+                        <Input invalid={errors.maxDistance.length>0} type="text" name="maxDistance" id="maxDistance" onChange={this.handleChange} required/>
                         {errors.maxDistance && <FormFeedback>{errors.maxDistance}</FormFeedback> }
                     </FormGroup>
                     <FormGroup>
                         <Label for="limit">Search Limit</Label>
-                        <Input invalid={errors.limit} type="number" name="limit" id="limit" onChange={this.handleChange} required/>
+                        <Input invalid={errors.limit.length>0} type="number" name="limit" id="limit" onChange={this.handleChange} required/>
                         {errors.limit && <FormFeedback>{errors.limit}</FormFeedback> }
                     </FormGroup>
-                    <Button color="dark" color='secondary'>Search</Button> 
+                    <Button color='secondary'>Search</Button> 
                 </Form>
                 
             </div>
