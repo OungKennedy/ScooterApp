@@ -144,7 +144,7 @@ class Scooter extends Component {
                         <Input invalid={errors.limit} type="number" name="limit" id="limit" onChange={this.handleChange} required/>
                         {errors.limit && <FormFeedback>{errors.limit}</FormFeedback> }
                     </FormGroup>
-                    <Button color="dark" block>Start Looking</Button> 
+                    <Button color="dark" color='secondary'>Search</Button> 
                 </Form>
                 
             </div>

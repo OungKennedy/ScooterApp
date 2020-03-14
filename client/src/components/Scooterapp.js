@@ -12,7 +12,6 @@ class Scooterapp extends Component {
 
     getSearchData=(dataFromScooter) => {
         this.setState({searchDetails:dataFromScooter});
-        console.log(this.state.searchDetails);
     }
 
     render() {
