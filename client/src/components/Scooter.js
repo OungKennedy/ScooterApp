@@ -7,7 +7,7 @@ import {
     Button,
     FormFeedback,
 } from 'reactstrap';
-const latBoundaries = [1.32, 1.43];
+const latBoundaries = [1.26, 1.46];
 const lngBoundaries = [103.55, 104];
 const validateForm = (errors) => {
     let valid = true;
