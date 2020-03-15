@@ -26,7 +26,7 @@ class Scootermap extends Component {
         if (this.props.searchDetails.maxDistance) {
             radius = <Circle center={centerCoords} radius={parseInt(this.props.searchDetails.maxDistance)}/>;
         }
-
+        console.log(this.props.searchDetails);
         return(
             <div>
                 <Map center={[centerlng, centerlat]} zoom={17}>
@@ -39,6 +39,7 @@ class Scootermap extends Component {
                     {radius}
 
                     {/* set markers */}
+                    
                     {this.props.searchDetails.scooters && this.props.searchDetails.scooters.map(scooter => (
                         <Marker 
                             key={scooter._id} 

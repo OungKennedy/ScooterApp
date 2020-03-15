@@ -9,6 +9,7 @@ import {
 } from 'reactstrap';
 const latBoundaries = [1.26, 1.46];
 const lngBoundaries = [103.55, 104];
+var failedFormSubmit = false;
 const validateForm = (errors) => {
     let valid = true;
     Object.values(errors).forEach(
@@ -17,7 +18,6 @@ const validateForm = (errors) => {
     );  
     return valid;
 }
-
 class Scooter extends Component {
     constructor(props) {
         super(props);
@@ -32,7 +32,7 @@ class Scooter extends Component {
                 lng: '',
                 limit: '',
                 maxDistance: ''
-            }
+            },
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -53,12 +53,19 @@ class Scooter extends Component {
             + '&limit=' + limit
             + '&maxDistance=' + maxDistance
             ).then(function(data){ // get information as json
-                return data.json();
+                if (data.status==500){
+                    failedFormSubmit=true;
+                } else {
+                    failedFormSubmit= false;
+                    return data.json();
+                }
             }).then(json => { // set state of component to json data
-                this.setState({
-                    scooters:json
-                });
-                this.props.searchDataFunctionCall(this.state);
+                if (!failedFormSubmit) {
+                    this.setState({
+                        scooters:json
+                    });
+                    this.props.searchDataFunctionCall(this.state);
+                }
             }); 
         }
     }
